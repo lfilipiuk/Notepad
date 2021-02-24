@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import NotesService from "../service/NotesService";
 import styles from "./NewNotes.module.scss";
 import styled from "styled-components";
-import { Button, Card } from "antd";
+import { Button, Card, Typography } from "antd";
+import { DeleteTwoTone } from "@ant-design/icons";
 
 const CardWrapper = styled.div`
   columns: 1;
 `;
+const { Title } = Typography;
 
 const NewNotes = ({ initial }) => {
   const service = new NotesService(initial);
@@ -66,7 +68,11 @@ const NewNotes = ({ initial }) => {
 
   return (
     <>
-      <div className={`${styles.form__group} ${styles.field}`}>
+      <Title style={{ color: "#fff" }}>_notify ❤️</Title>
+      <div
+        key={randomString()}
+        className={`${styles.form__group} ${styles.field}`}
+      >
         <input
           type="input"
           className={styles.form__field}
@@ -125,11 +131,12 @@ const NewNotes = ({ initial }) => {
             .filter((note) => note.text.includes(searchValue))
             .map((note) => (
               <Card
+                key={randomString()}
                 className={styles.card_card}
                 size="small"
-                title={note.id}
+                title="❤️"
                 style={{ width: 300 }}
-                onClick={() => handleRemove(note.id)}
+                extra={<DeleteTwoTone onClick={() => handleRemove(note.id)} />}
               >
                 <p>{note.text}</p>
               </Card>

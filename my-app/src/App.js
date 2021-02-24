@@ -9,8 +9,6 @@ import NewNotes from "./views/NewNotes.js";
 // `;
 
 function App() {
-  const initialData = [{ text: "CHUJ" }, { text: "THERE" }];
-
   return (
     <>
       <NewNotes />
